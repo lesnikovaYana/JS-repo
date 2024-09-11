@@ -1,38 +1,95 @@
 'use strict';
-// Какие недостатки вы видите в стиле написания кода этого примера?
+// Напишите код, выполнив задание из каждого пункта отдельной строкой:
 
-// function pow(x,n)
-// {
-//   let result=1;
-//   for(let i=0;i<n;i++) {result*=x;}
-//   return result;
-// }
+// Создайте пустой объект user.
+// Добавьте свойство name со значением John.
+// Добавьте свойство surname со значением Smith.
+// Измените значение свойства name на Pete.
+// Удалите свойство name из объекта.
 
-// let x=prompt("x?",''), n=prompt("n?",'')
-// if (n<=0)
-// {
-//   alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
-// }
-// else
-// {
-//   alert(pow(x,n))
-// }
+let user = {};
+user.name = 'John';
+user.surname = 'Smith';
+user.name = 'Pete';
+delete user.name;
 
-function pow(x, n) {
-  let result = 1;
+// Напишите функцию isEmpty(obj), которая возвращает true, если у объекта нет свойств, иначе false.
 
-  for (let i = 0; i < n; i++) {
-    result *= x;
+// Должно работать так:
+
+// let schedule = {};
+
+//  alert( isEmpty(schedule) ); // true
+
+//  schedule["8:30"] = "get up";
+
+//  alert( isEmpty(schedule) ); // false
+
+function isEmpty(obj) {
+  for (let key in obj) {
+    key in obj;
+    return false;
   }
-
-  return result;
+  return true;
 }
 
-let x = prompt("x?", '')
-let n = prompt("n?", '')
+// У нас есть объект, в котором хранятся зарплаты нашей команды:
 
-if (n <= 0) {
-  alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
-} else {
-  alert( pow(x, n) )
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130
 }
+// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390.
+
+// Если объект salaries пуст, то результат должен быть 0.
+
+function sumSalaries(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key]
+  }
+  return sum;
+}
+
+console.log(sumSalaries(salaries));
+
+// Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
+
+// Например:
+
+// // до вызова функции
+// let menu = {
+//   width: 200,
+//   height: 300,
+//   title: "My menu"
+// };
+
+// multiplyNumeric(menu);
+
+// // после вызова функции
+// menu = {
+//   width: 400,
+//   height: 600,
+//   title: "My menu"
+// };
+// Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
+
+// P.S. Используйте typeof для проверки, что значение свойства числовое.
+
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+
+function multiplyNumeric(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] *= 2;
+    }
+  }
+}
+
+multiplyNumeric(menu);
+console.log(menu);
