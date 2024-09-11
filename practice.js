@@ -1,95 +1,49 @@
 'use strict';
-// Напишите код, выполнив задание из каждого пункта отдельной строкой:
+// Создайте объект calculator (калькулятор) с тремя методами:
 
-// Создайте пустой объект user.
-// Добавьте свойство name со значением John.
-// Добавьте свойство surname со значением Smith.
-// Измените значение свойства name на Pete.
-// Удалите свойство name из объекта.
+// read() (читать) запрашивает два значения и сохраняет их как свойства объекта с именами a и b.
+// sum() (суммировать) возвращает сумму сохранённых значений.
+// mul() (умножить) перемножает сохранённые значения и возвращает результат.
 
-let user = {};
-user.name = 'John';
-user.surname = 'Smith';
-user.name = 'Pete';
-delete user.name;
+let calculator = {
+  a: 0,
+  b: 0,
 
-// Напишите функцию isEmpty(obj), которая возвращает true, если у объекта нет свойств, иначе false.
+  read(a, b) {
+    this.a = a;
+    this.b = b;
+  },
 
-// Должно работать так:
+  sum() {
+    return this.a + this.b
+  },
 
-// let schedule = {};
-
-//  alert( isEmpty(schedule) ); // true
-
-//  schedule["8:30"] = "get up";
-
-//  alert( isEmpty(schedule) ); // false
-
-function isEmpty(obj) {
-  for (let key in obj) {
-    key in obj;
-    return false;
+  mul() {
+    return this.a * this.b;
   }
-  return true;
-}
-
-// У нас есть объект, в котором хранятся зарплаты нашей команды:
-
-let salaries = {
-  John: 100,
-  Ann: 160,
-  Pete: 130
-}
-// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390.
-
-// Если объект salaries пуст, то результат должен быть 0.
-
-function sumSalaries(obj) {
-  let sum = 0;
-  for (let key in obj) {
-    sum += obj[key]
-  }
-  return sum;
-}
-
-console.log(sumSalaries(salaries));
-
-// Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
-
-// Например:
-
-// // до вызова функции
-// let menu = {
-//   width: 200,
-//   height: 300,
-//   title: "My menu"
-// };
-
-// multiplyNumeric(menu);
-
-// // после вызова функции
-// menu = {
-//   width: 400,
-//   height: 600,
-//   title: "My menu"
-// };
-// Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
-
-// P.S. Используйте typeof для проверки, что значение свойства числовое.
-
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu"
 };
 
-function multiplyNumeric(obj) {
-  for (let key in obj) {
-    if (typeof obj[key] === 'number') {
-      obj[key] *= 2;
-    }
-  }
-}
+// calculator.read(1, 3);
+// console.log(calculator.sum());
+// console.log(calculator.mul());
 
-multiplyNumeric(menu);
-console.log(menu);
+// У нас есть объект ladder (лестница), который позволяет подниматься и спускаться. 
+// Измените код методов up, down и showStep таким образом, чтобы их вызов можно было сделать по цепочке.
+
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep() {
+    console.log(this.step);
+    return this;
+  }
+};
+
+// ladder.up().up().down().showStep().down().showStep();
