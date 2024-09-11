@@ -1,24 +1,38 @@
 'use strict';
-// Замените код Function Expression стрелочной функцией:
+// Какие недостатки вы видите в стиле написания кода этого примера?
 
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no();
+// function pow(x,n)
+// {
+//   let result=1;
+//   for(let i=0;i<n;i++) {result*=x;}
+//   return result;
 // }
 
-// ask(
-//   "Вы согласны?",
-//   function() { alert("Вы согласились."); },
-//   function() { alert("Вы отменили выполнение."); }
-// );
+// let x=prompt("x?",''), n=prompt("n?",'')
+// if (n<=0)
+// {
+//   alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
+// }
+// else
+// {
+//   alert(pow(x,n))
+// }
 
-function ask(question, yes, no) {
-  if (confirm(question)) yes()
-  else no();
+function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
 }
 
-ask(
-  "Вы согласны?",
-  () => alert("Вы согласились."),
-  () => alert("Вы отменили выполнение.") 
-);
+let x = prompt("x?", '')
+let n = prompt("n?", '')
+
+if (n <= 0) {
+  alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
+} else {
+  alert( pow(x, n) )
+}
