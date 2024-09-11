@@ -1,49 +1,52 @@
 'use strict';
-// Создайте объект calculator (калькулятор) с тремя методами:
+// Создайте функцию-конструктор Calculator, которая создаёт объекты с тремя методами:
 
-// read() (читать) запрашивает два значения и сохраняет их как свойства объекта с именами a и b.
-// sum() (суммировать) возвращает сумму сохранённых значений.
-// mul() (умножить) перемножает сохранённые значения и возвращает результат.
+// read() запрашивает два значения при помощи prompt и сохраняет их значение в свойствах объекта.
+// sum() возвращает сумму этих свойств.
+// mul() возвращает произведение этих свойств.
 
-let calculator = {
-  a: 0,
-  b: 0,
+function Calculator(a, b) {
+  this.a = a;
+  this.b = b;
 
-  read(a, b) {
+  this.read = function (a, b) {
     this.a = a;
     this.b = b;
-  },
+  };
 
-  sum() {
-    return this.a + this.b
-  },
+  this.sum = function () {
+    return this.a + this.b;
+  };
 
-  mul() {
+  this.mul = function () {
     return this.a * this.b;
-  }
-};
+  };
+}
 
-// calculator.read(1, 3);
+// let calculator = new Calculator();
+// calculator.read(2, 5);
 // console.log(calculator.sum());
 // console.log(calculator.mul());
 
-// У нас есть объект ladder (лестница), который позволяет подниматься и спускаться. 
-// Измените код методов up, down и showStep таким образом, чтобы их вызов можно было сделать по цепочке.
+// Создайте функцию-конструктор Accumulator(startingValue).
 
-let ladder = {
-  step: 0,
-  up() {
-    this.step++;
-    return this;
-  },
-  down() {
-    this.step--;
-    return this;
-  },
-  showStep() {
-    console.log(this.step);
-    return this;
-  }
-};
+// Объект, который она создаёт, должен уметь следующее:
 
-// ladder.up().up().down().showStep().down().showStep();
+// Хранить «текущее значение» в свойстве value. Начальное значение устанавливается в аргументе конструктора startingValue.
+// Метод read() должен использовать prompt для считывания нового числа и прибавления его к value.
+// Другими словами, свойство value представляет собой сумму всех введённых пользователем значений, с учётом начального значения startingValue.
+
+function Accumulator(startingValue) {
+  this.value = startingValue;
+
+  this.read = function () {
+    this.value = this.value + +prompt('Сколько нужно добавить?', 0);
+  };
+}
+
+let accumulator = new Accumulator(1); 
+
+accumulator.read(); 
+accumulator.read(); 
+
+console.log(accumulator.value); 
