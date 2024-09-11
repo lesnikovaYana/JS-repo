@@ -1,55 +1,24 @@
 'use strict';
-// Следующая функция возвращает true, если параметр age больше 18.
+// Замените код Function Expression стрелочной функцией:
 
-// В ином случае она задаёт вопрос confirm и возвращает его результат.
-
-// function checkAge(age) {
-//   if (age > 18) {
-//     return true;
-//   } else {
-//     return confirm('Родители разрешили?');
-//   }
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
 // }
-// Перепишите функцию, чтобы она делала то же самое, но без if, в одну строку.
 
-// Сделайте два варианта функции checkAge:
+// ask(
+//   "Вы согласны?",
+//   function() { alert("Вы согласились."); },
+//   function() { alert("Вы отменили выполнение."); }
+// );
 
-// Используя оператор ?
-// Используя оператор ||
-
-function checkAgeOne(age) {
-  return (age > 18) ? true : console.log('Родители разрешили?');
+function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
 }
 
-function checkAgeTwo(age) {
-  return (age > 18) || console.log('Родители разрешили?');
-}
-
-// Напишите функцию min(a,b), которая возвращает меньшее из чисел a и b.
-
-// Пример вызовов:
-
-// min(2, 5) == 2
-// min(3, -1) == -1
-// min(1, 1) == 1
-
-function min(a, b) {
-  return (a < b) ? a : b;
-}
-
-// Напишите функцию pow(x,n), которая возводит x в степень n и возвращает результат.
-
-// pow(3, 2) = 3 * 3 = 9
-// pow(3, 3) = 3 * 3 * 3 = 27
-// pow(1, 100) = 1 * 1 * ...* 1 = 1
-// Создайте страницу, которая запрашивает x и n, а затем выводит результат pow(x,n).
-
-// P.S. В этой задаче функция обязана поддерживать только натуральные значения n, т.е. целые от 1 и выше.
-
-function pow(a, b) {
-  return (b >= 1) ? a**b : `Степень ${b} не поддерживается, используйте натуральное число`;
-}
-
-let a = +prompt("Enter the first number:");
-let b = +prompt("Enter the second number:");
-alert(pow(a, b));
+ask(
+  "Вы согласны?",
+  () => alert("Вы согласились."),
+  () => alert("Вы отменили выполнение.") 
+);
